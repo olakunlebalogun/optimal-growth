@@ -11,6 +11,7 @@
     </parent>
     <modules>
         <module>license-service</module>
+        <module>configuration-server</module>
     </modules>
     <groupId>com.olakunle</groupId>
     <artifactId>optimal-growth-project</artifactId>
