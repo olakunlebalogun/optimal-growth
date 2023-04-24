@@ -8,7 +8,10 @@ spring:
   cloud:
     config:
       server:
-#        bootstrap: true
         native:
-          search-locations: classpath:/config/{application}
-#          search-locations: file: ///home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-server/src/main/resources/config
+          search-locations: classpath:/config
+        git:
+          uri: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-server/src/main/resources/config/git-localconfig-repo
+#          uri: https://github.com/ihuaylupo/config
+#          search-paths: licensing-service
+        bootstrap: false
