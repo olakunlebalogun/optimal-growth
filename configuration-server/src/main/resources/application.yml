@@ -1,24 +1,66 @@
+##  ********************************************  ##
+## ---USING FILESYSTEM AS CLOUD CONFIGURATION ----##
+##  ********************************************  ##
+
 server:
-  port: 8071
+  port: 8071  # Application port
 spring:
   application:
-    name: config-server
+    name: config-server # Application name
   profiles:
-    active: native
+    active: native # This has to be set to native for filesystem configuration
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+        git:
+          uri: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-server/src/main/resources/config/git-localconfig-repo
+encrypt:
+  key: olakunlebalogun247
+
+
+--- # git
+
+##  ********************************************  ##
+## ---USING GIT AS CLOUD CONFIGURATION -----------##
+##  ********************************************  ##
+
+spring:
+  application:
+    name: config-server # Application name
+  profiles:
+    active: native # This has to be set to native for file-system and GIT configuration
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+        git:
+          uri: https://github.com/ihuaylupo/config
+          search-paths: licensing-service
+encrypt:
+  key: olakunlebalogun247
+
+---
+##  ********************************************  ##
+## ---USING VAULT AS CLOUD CONFIGURATION  --------##
+##  ********************************************  ##
+
+spring:
+  application:
+    name: config-server # Application name
+  profiles:
+    active: native # This has to be set to native for filesystem configuration
   cloud:
     config:
       server:
         vault:
-          port: 8200
+          port: 8200  #
           host: 127.0.0.1
           kv-version: 2
-#        native:
-#          search-locations: classpath:/config
-#        git:
-          # Using file
-#          uri: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-server/src/main/resources/config/git-localconfig-repo
-          # Using GIT
-#                  uri: https://github.com/ihuaylupo/config
-#                  search-paths: licensing-service
+        native:
+          search-locations: classpath:/config
+
 encrypt:
   key: olakunlebalogun247
