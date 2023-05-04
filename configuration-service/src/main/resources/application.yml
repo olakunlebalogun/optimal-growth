@@ -2,5 +2,11 @@ spring:
   cloud:
     config:
       server:
-        native:
-          search-locations: file:/// {file_path}
+        native:  # use native when the config type is of file-system
+#          search-locations: file:/// {file_path}
+          search-locations: classpath:/config
+  application:
+    name: config-server
+
+server:
+  port: 8071

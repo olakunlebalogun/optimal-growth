@@ -1,5 +1,12 @@
-server:
-  port: 8071
-spring:
-  application:
-    name: config-server
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        native:  # use native when the config type is of file-system
+#          #          search-locations: file:/// {file_path}
+#          search-locations: classpath:/config
+#  application:
+#    name: config-server
+#
+#server:
+#  port: 8071
