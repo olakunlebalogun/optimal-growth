@@ -2,14 +2,10 @@ example:
   property: I AM THE DEFAULT
 
 spring:
-  profiles:
-    active: dev
   datasource:
     platform: postgres
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/ostock
-    username: postgres
-    password: ola24oluwa
 
   jpa:
     hibernate:
@@ -26,5 +22,5 @@ management:
   endpoints:
     web:
       exposure:
-        include: *
+        include: "*"
     enabled-by-default: true
