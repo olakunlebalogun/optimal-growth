@@ -3,15 +3,16 @@ spring:
     config:
       server:
         native:  # use native when the config type is of file-system
-          search-locations: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
-#          search-locations: classpath:/config
-#        git:
-#          uri: file:/home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
+#          search-locations: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
+          search-locations: classpath:/config
+        git:
+          uri: https://github.com/ihuaylupo/config.git
+          search-paths: licensingservice # Note: Path for license service in the git repository
         bootstrap: true
   application:
     name: configserver
   profiles:
-    active: native # This must be there.
+    active: native, git # This must be there.
 
 server:
   port: 8071
