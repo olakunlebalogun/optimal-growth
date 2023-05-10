@@ -12,6 +12,16 @@ services:
       backend:
         aliases:
           - "licenseservice"
+  configservice:
+    image: ostock/configuration-service:0.0.1-SNAPSHOT
+    ports:
+      - "8071:8071"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    networks:
+      backend:
+        aliases:
+          - "licenseservice"
 networks:
   backend:
     driver: bridge
