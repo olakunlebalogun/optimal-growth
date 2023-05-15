@@ -1,10 +1,10 @@
-package com.olakunle;
+package com.olakunle.organizationservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OptimalGrowthProjectApplicationTests {
+class OrganizationServiceApplicationTests {
 
     @Test
     void contextLoads() {

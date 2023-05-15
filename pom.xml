@@ -12,6 +12,8 @@
     <modules>
         <module>license-service</module>
         <module>configuration-service</module>
+        <module>eureka-server</module>
+        <module>organization-service</module>
     </modules>
     <groupId>com.olakunle</groupId>
     <artifactId>optimal-growth-project</artifactId>

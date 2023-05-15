@@ -1,13 +1,13 @@
-package com.olakunle;
+package com.olakunle.organizationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OptimalGrowthProjectApplication {
+public class OrganizationServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OptimalGrowthProjectApplication.class, args);
+        SpringApplication.run(OrganizationServiceApplication.class, args);
     }
 
 }
