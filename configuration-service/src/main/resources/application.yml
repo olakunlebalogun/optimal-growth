@@ -6,7 +6,7 @@ spring:
           search-locations: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
         bootstrap: true
   application:
-    name: configserver
+    name: config-service
   profiles:
     active: native # This must be there.
 
