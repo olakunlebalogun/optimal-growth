@@ -1,6 +1,12 @@
+ ##################################################
+             ORGANIZATION SERVICE
+ #################################################
 example:
   property: I AM THE DEFAULT
 
+#### SERVER PORT ####
+server:
+  port: 8081
 
 #### DATASOURCE MANAGEMENT ####
 spring:
