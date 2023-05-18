@@ -1,7 +1,5 @@
-example:
-  property: "I AM DEV"
 spring:
-  profile:
+  profiles:
     active: dev
   datasource:
     url: jdbc:postgresql://localhost:5432/ostock_dev
