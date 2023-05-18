@@ -10,19 +10,19 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @SpringBootApplication
 @EnableEurekaServer
 @Slf4j
-public class EurekaServerApplication implements CommandLineRunner {
+public class EurekaServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaServerApplication.class, args);
 	}
 
-	@Value("${eureka.instance.hostname}")
-	public String hostName;
-
-	@Override
-	public void run(String... args) throws Exception {
-		log.error("########################## {} #############################", hostName);
-	}
+//	@Value("${eureka.instance.hostname}")
+//	public String hostName;
+//
+//	@Override
+//	public void run(String... args) throws Exception {
+//		log.error("########################## {} #############################", hostName);
+//	}
 
 
 
