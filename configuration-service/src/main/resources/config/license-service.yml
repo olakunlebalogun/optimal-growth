@@ -19,6 +19,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+  main:
+    web-application-type: reactive
+
   ### EUREKA MANAGEMENT ####
 eureka:
   instance:
@@ -36,3 +39,4 @@ management:
       exposure:
         include: "*"
     enabled-by-default: true
+
