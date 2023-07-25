@@ -3,8 +3,8 @@ spring:
     config:
       server:
         native:  # use native when the config type is of file-system
-          search-locations: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
-#          search-locations: classpath:/config
+#          search-locations: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
+          search-locations: classpath:/config
 #        git:
 #          uri: file:/home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
         bootstrap: true

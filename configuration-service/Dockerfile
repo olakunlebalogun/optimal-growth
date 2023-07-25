@@ -1,16 +1,16 @@
-FROM eclipse-temurin as build
+FROM eclipse-temurin:17-jdk-alpine as build
 
 LABEL maintainer="Olakune Balogun <olakunebalogun247@gmail.com>"
 
-ARG JAR_FILE
-
+ARG JAR_FILE=target/configuration-service.jar
+# ARG JAR_FILE // This is the default
 COPY ${JAR_FILE} app.jar
 
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf /app.jar)
 
 # STAGE TWO
 
-FROM eclipse-temurin
+FROM eclipse-temurin:17-jdk-alpine
 
 VOLUME /tmp
 
