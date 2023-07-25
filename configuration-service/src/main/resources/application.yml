@@ -7,7 +7,7 @@ spring:
           search-locations: classpath:/config
         git:
           uri: https://github.com/ihuaylupo/config.git
-          search-paths: licensingservice # Note: Path for license service in the git repository
+          search-paths: licensingservice # Note: Path for license service in the git repository, also the value of this property is a comma-separated list
         bootstrap: true
   application:
     name: configserver
