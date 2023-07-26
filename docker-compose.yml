@@ -3,7 +3,7 @@ services:
   database:
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5431:5432"
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "ola24oluwa"
@@ -21,7 +21,9 @@ services:
       timeout: 5s
       retries: 5
   configserver:
-    image: ostock/configserver:0.0.1-SNAPSHOT
+#    image: ostock/configserver:0.0.1-SNAPSHOT
+    build:
+      context: ./configuration-service
     ports:
       - "8071:8071"
     environment:
@@ -31,12 +33,14 @@ services:
         aliases:
           - "configserver"
   licensingservice:
-    image: ostock/licensing-service:0.0.2-SNAPSHOT
+#    image: ostock/licensing-service:0.0.2-SNAPSHOT
+    build:
+      context: ./license-service
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
       CONFIGSERVER_PORT:   "8071"
-      DATABASESERVER_PORT: "5432"
+      DATABASESERVER_PORT: "5431"
       ENCRYPT_KEY:       "IMSYMMETRIC"
     depends_on:
       database:
