@@ -7,7 +7,8 @@ spring:
           search-locations: classpath:/config
         git:
           uri: https://github.com/ihuaylupo/config.git
-          search-paths: licensingservice # Note: Path for license service in the git repository, also the value of this property is a comma-separated list
+          search-paths: licensing-service # Note: Path for license service in the git repository, also the value of this property is a comma-separated list
+          default-label: master # Note: this tells spring cloud config to check master branch on git first before any other branch
         bootstrap: true
   application:
     name: configserver
