@@ -1,17 +1,11 @@
-
-
-
-
-#stage 1
-#Start with a base image containing Java runtime
-FROM openjdk:11-slim as build
+FROM eclipse-temurin:17-jdk-alpine as build
 
 # Add Maintainer Info
 LABEL authors="olakunle <olakunlebalogun247@gmail.com>"
 LABEL maintainer="olakunle <olakunlebalogun247@gmail.com>"
 
 # The application's jar file
-ARG JAR_FILE
+ARG JAR_FILE=target/organization-service.jar
 
 # Add the application's jar to the container
 COPY ${JAR_FILE} app.jar
@@ -21,7 +15,7 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf /app.jar)
 
 #stage 2
 #Same Java runtime
-FROM openjdk:11-slim
+FROM eclipse-temurin:17-jdk-alpine
 
 #Add volume pointing to /tmp
 VOLUME /tmp

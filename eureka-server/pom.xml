@@ -16,12 +16,9 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.2</spring-cloud.version>
+		<docker.image.prefix>ostock</docker.image.prefix>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
@@ -33,12 +30,6 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -59,7 +50,31 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.13</version>
+
+				<configuration>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
+		<finalName>eureka-server</finalName>
 	</build>
 	<repositories>
 		<repository>
