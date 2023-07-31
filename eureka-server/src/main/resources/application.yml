@@ -11,6 +11,4 @@ spring:
     #    loadbalancer:
 #      enabled: false
 
-#  config:
-#    import: config-server
 

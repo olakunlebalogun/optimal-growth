@@ -4,7 +4,7 @@ services:
     image: postgres:latest
     container_name: ostock_database
     ports:
-      - "5432:5432"
+      - "5431:5432"
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "ola24oluwa"
@@ -34,6 +34,7 @@ services:
           - "configserver"
   eurekaserver:
     image: ostock/eurekaserver:0.0.1-SNAPSHOT
+    container_name: eureka_server
     ports:
       - "8070:8070"
     depends_on:
@@ -47,11 +48,12 @@ services:
           - "eurekaserver"
   license_service:
     image: ostock/license-service:0.0.3-SNAPSHOT
+    container_name: license_service
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
       CONFIGSERVER_PORT:   "8071"
-      DATABASESERVER_PORT: "5432"
+      DATABASESERVER_PORT: "5431"
 #      ENCRYPT_KEY:       "IMSYMMETRIC"
     depends_on:
       database:
@@ -69,7 +71,7 @@ services:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
       CONFIGSERVER_PORT:   "8071"
-      DATABASESERVER_PORT: "5432"
+      DATABASESERVER_PORT: "5431"
 #      ENCRYPT_KEY:       "IMSYMMETRIC"
     depends_on:
       database:
