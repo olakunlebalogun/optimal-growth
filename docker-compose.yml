@@ -6,7 +6,7 @@ services:
     ports:
       - "${POSTGRES_PORT}:${POSTGRES_PORT_DOCKER}"
     env_file:
-      - ./.env
+      - ./postgres.env
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
       - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
@@ -19,8 +19,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  configserver:
-    image: ostock/configserver:0.0.1-SNAPSHOT
+  config_server:
+    image: ostock/configuration-service:0.0.1-SNAPSHOT
     container_name: configuration_server
     ports:
       - "${CONFIG_SERVER_PORT}:${CONFIG_SERVER_PORT_DOCKER}"
@@ -30,8 +30,8 @@ services:
       backend:
         aliases:
           - "configserver"
-  eurekaserver:
-    image: ostock/eurekaserver:0.0.1-SNAPSHOT
+  eureka_server:
+    image: ostock/eureka-server:0.0.1-SNAPSHOT
     container_name: eureka_server
     ports:
       - "${EUREKA_SERVER_PORT}:${EUREKA_SERVER_PORT_DOCKER}"
@@ -45,7 +45,7 @@ services:
         aliases:
           - "eurekaserver"
   license_service:
-    image: ostock/license-service:0.0.3-SNAPSHOT
+    image: ostock/license-service:0.0.1-SNAPSHOT
     container_name: license_service
     environment:
       PROFILE: "dev"
@@ -63,7 +63,7 @@ services:
     networks:
       - backend
   organization_service:
-    image: ostock/organization-service:0.0.2-SNAPSHOT
+    image: ostock/organization-service:0.0.1-SNAPSHOT
     container_name: organization_service
     environment:
       PROFILE: "dev"

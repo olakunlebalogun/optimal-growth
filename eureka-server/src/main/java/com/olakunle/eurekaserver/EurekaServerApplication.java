@@ -16,13 +16,6 @@ public class EurekaServerApplication {
 		SpringApplication.run(EurekaServerApplication.class, args);
 	}
 
-//	@Value("${eureka.instance.hostname}")
-//	public String hostName;
-//
-//	@Override
-//	public void run(String... args) throws Exception {
-//		log.error("########################## {} #############################", hostName);
-//	}
 
 
 
