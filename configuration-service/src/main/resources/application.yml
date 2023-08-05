@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      server:
+        native:  # use native when the config type is of file-system
+          search-locations: file:////home/olakunle/Folders/spring/My-Spring-Projects/optimal-growth-project/configuration-service/src/main/resources/config/
+        bootstrap: true
+  application:
+    name: config-service
+  profiles:
+    active: native # This must be there.
+
+server:
+  port: 8071

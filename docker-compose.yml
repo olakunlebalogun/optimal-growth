@@ -1,0 +1,86 @@
+version: '3.8'
+services:
+  database:
+    image: postgres:latest
+    container_name: ostock_database
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT_DOCKER}"
+    env_file:
+      - ./postgres.env
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
+      - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
+    networks:
+      backend:
+        aliases:
+          - "database"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  config_server:
+    image: ostock/configuration-service:0.0.1-SNAPSHOT
+    container_name: configuration_server
+    ports:
+      - "${CONFIG_SERVER_PORT}:${CONFIG_SERVER_PORT_DOCKER}"
+#    environment:
+#      ENCRYPT_KEY: "fje83Ki8403Iod87dne7Yjsl3THueh48jfuO9j4U2hf64Lo"
+    networks:
+      backend:
+        aliases:
+          - "config_server"
+  eureka_server:
+    image: ostock/eureka-server:0.0.1-SNAPSHOT
+    container_name: eureka_server
+    ports:
+      - "${EUREKA_SERVER_PORT}:${EUREKA_SERVER_PORT_DOCKER}"
+    depends_on:
+      database:
+        condition: service_healthy
+      config_server:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "eureka_server"
+  license_service:
+    image: ostock/license-service:0.0.1-SNAPSHOT
+    container_name: license_service
+    environment:
+      PROFILE: "dev"
+      CONFIGSERVER_URI: "http://configserver:${CONFIG_SERVER_PORT}"
+      CONFIGSERVER_PORT:   "${CONFIG_SERVER_PORT}"
+      DATABASESERVER_PORT: "${POSTGRES_PORT}"
+#      ENCRYPT_KEY:       "IMSYMMETRIC"
+    depends_on:
+      database:
+        condition: service_healthy
+      config_server:
+        condition: service_started
+    ports:
+      - "${LICENSE_SERVICE_PORT}:${LICENSE_SERVICE_PORT_DOCKER}"
+    networks:
+      - backend
+  organization_service:
+    image: ostock/organization-service:0.0.1-SNAPSHOT
+    container_name: organization_service
+    environment:
+      PROFILE: "dev"
+      CONFIGSERVER_URI: "http://configserver:${CONFIG_SERVER_PORT}"
+      CONFIGSERVER_PORT:   "${CONFIG_SERVER_PORT}"
+      DATABASESERVER_PORT: "${POSTGRES_PORT}"
+#      ENCRYPT_KEY:       "IMSYMMETRIC"
+    depends_on:
+      database:
+        condition: service_healthy
+      config_server:
+        condition: service_started
+    ports:
+      - "${ORGANIZATION_SERVICE_PORT}:${ORGANIZATION_SERVICE_PORT_DOCKER}"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
