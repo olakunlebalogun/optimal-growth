@@ -31,8 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### ENV file ###
-.env
-!sample.env
-*.env
