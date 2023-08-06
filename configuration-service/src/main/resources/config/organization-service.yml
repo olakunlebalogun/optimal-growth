@@ -1,6 +1,6 @@
 #### SERVER PORT ####
-server:
-  port: 8081
+#server:
+#  port: 8081
 
 #### DATASOURCE MANAGEMENT ####
 spring:
@@ -14,7 +14,6 @@ spring:
       ddl-auto: none
     database: postgresql
     show-sql: true
-
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -36,3 +35,6 @@ management:
       exposure:
         include: "*"
     enabled-by-default: true
+
+server:
+  port: 8234

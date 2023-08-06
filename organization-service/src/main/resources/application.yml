@@ -1,15 +1,3 @@
-#spring:
-#  application:
-#    name: "organization-service"
-#  profiles:
-#    active: dev
-#  cloud:
-#    config:
-#      uri: http://localhost:8071
-#  config:
-#    import: "configserver:"
----
-
 spring:
   application:
     name: organization-service
@@ -18,6 +6,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:8071
-#      uri: http://configserver:8071
   config:
     import: "configserver:"
+server:
+  port: 8234
