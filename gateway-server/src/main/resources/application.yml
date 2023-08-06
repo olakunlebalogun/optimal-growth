@@ -6,3 +6,8 @@ spring:
       uri: http://localhost:8071
   config:
     import: "configserver:"
+
+  main:
+    web-application-type: reactive
+server:
+  port: 8770
