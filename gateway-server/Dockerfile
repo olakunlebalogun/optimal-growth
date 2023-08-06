@@ -8,6 +8,11 @@ LABEL maintainer="Olakune Balogun <olakunebalogun247@gmail.com>"
 # The application's jar file
 ARG JAR_FILE=target/gateway-server.jar
 
+LABEL authors="olakunle <olakunlebalogun247@gmail.com>"
+LABEL maintainer="olakunle <olakunlebalogun247@gmail.com>"
+
+# Sets the file creator to olakunle i.e the system user and its group
+RUN addgroup olakunle && adduser -S -G olakunle olakunle
 # Add the application's jar to the container
 COPY ${JAR_FILE} app.jar
 

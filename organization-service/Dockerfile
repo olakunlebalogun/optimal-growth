@@ -3,7 +3,8 @@ FROM eclipse-temurin:17-jdk-alpine as build
 # Add Maintainer Info
 LABEL authors="olakunle <olakunlebalogun247@gmail.com>"
 LABEL maintainer="olakunle <olakunlebalogun247@gmail.com>"
-
+# Sets the file creator to olakunle i.e the system user and its group
+RUN addgroup olakunle && adduser -S -G olakunle olakunle
 # The application's jar file
 ARG JAR_FILE=target/organization-service.jar
 
