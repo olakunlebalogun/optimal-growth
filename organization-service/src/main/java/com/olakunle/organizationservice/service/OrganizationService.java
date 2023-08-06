@@ -4,6 +4,7 @@ package com.olakunle.organizationservice.service;
 import com.olakunle.organizationservice.model.Organization;
 import com.olakunle.organizationservice.repository.OrganizationRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,6 +12,7 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class OrganizationService {
 
 
@@ -34,5 +36,13 @@ public class OrganizationService {
 
     public void delete(Organization organization){
         repository.deleteById(organization.getId());
+    }
+
+    private void sleep(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            log.error(e.getMessage());
+        }
     }
 }

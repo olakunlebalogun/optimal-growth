@@ -1,4 +1,4 @@
-package com.optimagrowth.organization.utils;
+package com.olakunle.organizationservice.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
