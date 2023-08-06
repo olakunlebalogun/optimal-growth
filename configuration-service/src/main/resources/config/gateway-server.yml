@@ -15,3 +15,9 @@ spring:
       discovery.locator:
         enabled: true
         lowerCaseServiceId: true
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.olakunle: DEBUG
