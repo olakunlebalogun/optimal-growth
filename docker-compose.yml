@@ -26,6 +26,9 @@ services:
       - "${CONFIG_SERVER_PORT}:${CONFIG_SERVER_PORT_DOCKER}"
 #    environment:
 #      ENCRYPT_KEY: "fje83Ki8403Iod87dne7Yjsl3THueh48jfuO9j4U2hf64Lo"
+    depends_on:
+      database:
+          condition: service_healthy
     networks:
       backend:
         aliases:
@@ -58,9 +61,9 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      configserver:
+      config_server:
         condition: service_started
-      eurekaserver:
+      eureka_server:
         condition: service_started
     networks:
       backend:
