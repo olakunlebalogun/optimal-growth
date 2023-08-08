@@ -10,8 +10,7 @@ CREATE TABLE IF NOT EXISTS public.organizations
 
 TABLESPACE pg_default;
 
-ALTER TABLE public.organizations
-    OWNER to postgres;
+ALTER TABLE public.organizations OWNER to postgres;
 
 
 CREATE TABLE IF NOT EXISTS public.licenses
@@ -32,5 +31,4 @@ CREATE TABLE IF NOT EXISTS public.licenses
 
 TABLESPACE pg_default;
 
-ALTER TABLE public.licenses
-    OWNER to postgres;
+ALTER TABLE public.licenses OWNER to postgres;
