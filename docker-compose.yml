@@ -108,17 +108,18 @@ services:
   keycloak:
     image: jboss/keycloak
     restart: always
+    container_name: keycloak
     environment:
       KEYCLOAK_VERSION: 16.1.1
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_USER: olakunle
+      KEYCLOAK_PASSWORD: olakunle
     volumes:
       - ./realm-export.json:/opt/jboss/keycloak/realm-export.json
-    command:
-      - "-b 0.0.0.0"
-      - "-Dkeycloak.import=/opt/jboss/keycloak/realm-export.json"
-      - "-Dkeycloak.profile.feature.scripts=enabled"
-      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+#    command:
+#      - "-b 0.0.0.0"
+#      - "-Dkeycloak.import=/opt/jboss/keycloak/realm-export.json"
+#      - "-Dkeycloak.profile.feature.scripts=enabled"
+#      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
     ports:
       - "8080:8080"
     networks:
